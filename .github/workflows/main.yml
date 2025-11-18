@@ -1,0 +1,34 @@
+name: Daily Scheduled API Call   # 1. The Name
+
+on:                              # 2. The Trigger
+  schedule:
+    - cron: '0 1 * * *'          # "Run at 1:00 AM UTC"
+  workflow_dispatch:             # "Allow me to click a button to run it now"
+
+jobs:
+  run_daily_post:                # 3. The Job Name
+    runs-on: ubuntu-latest       # 4. The Computer (The "Runner")
+
+    env:                         # 5. The Secrets (Environment Variables)
+      MY_EXTERNAL_API_KEY: ${{ secrets.EXTERNAL_API_KEY }}
+
+    steps:                       # 6. The Steps (The actual work)
+    - name: Checkout Repository
+      uses: actions/checkout@v4  # "Download my code to this computer"
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'   # "Install Python 3.11"
+
+    - name: Install pipenv
+      run: |                     # "Install the libraries I need"
+        python install pipenv
+        pipenv sync
+    - name: Install dependencies from Lock File
+      run: |                     # "Install the libraries I need"
+        python install pipenv
+        pipenv sync
+
+    - name: Execute Script
+      run: pipenv run python send_raw_post_request.py  # "Run the actual command"
