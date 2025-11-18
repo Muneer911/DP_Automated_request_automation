@@ -10,7 +10,9 @@ jobs:
     runs-on: ubuntu-latest       # 4. The Computer (The "Runner")
 
     env:                         # 5. The Secrets (Environment Variables)
-      MY_EXTERNAL_API_KEY: ${{ secrets.EXTERNAL_API_KEY }}
+      SECRET_KEY: ${{ secrets.SECRET_KEY }}
+      API_CREDENTIALS: ${{ secrets.API_CREDENTIALS }}
+      API_URL: ${{ secrets.API_URL }}
 
     steps:                       # 6. The Steps (The actual work)
     - name: Checkout Repository
