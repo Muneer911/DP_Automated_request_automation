@@ -28,7 +28,7 @@ load_dotenv(BASE_DIR / '.env')
 SECRET_KEY = os.getenv('SECRET_KEY')
 API_URL = os.getenv('API_URL')
 try:
-    API_CREDENTIALS = json.loads(os.getenv('API_CREDENTIALS', '[]'))
+    API_CREDENTIALS = json.loads(os.getenv('API_CREDENTIALS'))
 except json.JSONDecodeError:
     print("CRITICAL: Invalid JSON in API_CREDENTIALS environment variable. Using empty list.")
     API_CREDENTIALS = []
