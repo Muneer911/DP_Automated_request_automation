@@ -9,11 +9,6 @@ jobs:
   run_daily_post:                # 3. The Job Name
     runs-on: ubuntu-latest       # 4. The Computer (The "Runner")
 
-    env:                         # 5. The Secrets (Environment Variables)
-      SECRET_KEY: ${{ secrets.SECRET_KEY }}
-      API_CREDENTIALS: ${{ secrets.API_CREDENTIALS }}
-      API_URL: ${{ secrets.API_URL }}
-
     steps:                       # 6. The Steps (The actual work)
     - name: Checkout Repository
       uses: actions/checkout@v4  # "Download my code to this computer"
@@ -31,5 +26,10 @@ jobs:
       run: |                     # "Install the libraries I need"
         pipenv sync
 
-    - name: Execute Script
-      run: pipenv run python manage.py send_request_command # "Run the actual command"
+    - name: Execute Command
+      env:
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        API_CREDENTIALS: ${{ secrets.API_CREDENTIALS }}
+        API_URL: ${{ secrets.API_URL }}
+        DEBUG: "False"
+      run: pipenv run python manage.py send_request_command
