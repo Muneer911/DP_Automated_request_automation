@@ -2,7 +2,7 @@ from typing import Any
 from django.core.management.base import BaseCommand, CommandError
 import requests
 from dp_request_automation.settings import API_URL, API_CREDENTIALS
-
+import json 
 class Command(BaseCommand):
     help = "Send a POST request to a specified URL with given data."
     headers = {'content-type': 'application/json'}
