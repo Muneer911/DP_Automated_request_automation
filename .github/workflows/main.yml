@@ -32,4 +32,4 @@ jobs:
         pipenv sync
 
     - name: Execute Script
-      run: pipenv run python manage.py send_scheduled_request # "Run the actual command"
+      run: pipenv run python manage.py dp_request_automation.post # "Run the actual command"
