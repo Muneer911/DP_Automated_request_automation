@@ -8,7 +8,7 @@ class Command(BaseCommand):
     headers = {'content-type': 'application/json'}
 
     def handle(self, *args: Any, **options: Any) -> str | None:
-        """The main logic for the management command."""
+        "The main logic for the management command."
 
         # 1. Validate that the API_URL is configured in the environment.
         if not API_URL:
@@ -19,7 +19,7 @@ class Command(BaseCommand):
             self.stdout.write(f"Sending sign-in request...")
             
             # The server expects the credentials to be nested under a "credentials" key.
-            payload = {"credentials": API_CREDENTIALS}
+            payload = json.load(API_CREDENTIALS)
             response = requests.post(API_URL, json=payload, headers=self.headers)
 
             # 3. Check for HTTP errors (e.g., 401 Unauthorized, 500 Server Error).
