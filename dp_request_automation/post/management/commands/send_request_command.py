@@ -20,7 +20,7 @@ class Command(BaseCommand):
             
             # The server expects the credentials to be nested under a "credentials" key.
             payload = {"credentials": API_CREDENTIALS}
-            response = requests.post(API_URL, json=payload, headers=self.headers, timeout=10)
+            response = requests.post(API_URL, json=payload, headers=self.headers)
 
             # 3. Check for HTTP errors (e.g., 401 Unauthorized, 500 Server Error).
             # This will raise an exception if the response status code is 4xx or 5xx.
