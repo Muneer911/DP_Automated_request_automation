@@ -25,11 +25,10 @@ jobs:
 
     - name: Install pipenv
       run: |                     # "Install the libraries I need"
-        python install pipenv
+        pip install pipenv
         pipenv sync
     - name: Install dependencies from Lock File
       run: |                     # "Install the libraries I need"
-        python install pipenv
         pipenv sync
 
     - name: Execute Script
