@@ -18,9 +18,7 @@ class Command(BaseCommand):
             # 2. Prepare the payload and send the POST request.
             self.stdout.write(f"Sending sign-in request...")
             
-            # The server expects the credentials to be nested under a "credentials" key.
-            payload = json.load(API_CREDENTIALS)
-            response = requests.post(API_URL, json=payload, headers=self.headers)
+            response = requests.post(API_URL, json=API_CREDENTIALS, headers=self.headers)
 
             # 3. Check for HTTP errors (e.g., 401 Unauthorized, 500 Server Error).
             # This will raise an exception if the response status code is 4xx or 5xx.
