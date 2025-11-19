@@ -34,7 +34,7 @@ except json.JSONDecodeError:
     API_CREDENTIALS = []
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
